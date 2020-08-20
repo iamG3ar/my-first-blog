@@ -1,34 +1,52 @@
-h1 a, h2 a {
-    color: #C25100;
-    font-family: 'Lobster';
+/*h1 a, h2 a {
+  font-size: 16px;
+  padding-top: 100px;
+  width: 100%;
+  font-family: 'Ultra';
+}
+
+.page-header h1 {
+    padding-left: 20px;
+    font-family: 'Ultra', serif;
+    font-size: 66px;
 }
 
 body {
-    padding-left: 15px;
+    background-color: #fca311;
+    background-image: linear-gradient(45deg, #fca311, #ffba08);
 }
 
 .page-header {
-    background-color: #C25100;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  margin-top: 0px;
+  border-top: -15px;
+  width: 100%;
+  height: 15%;
+  background: #000000;
+  color: #fca311;
 }
 
-.page-header h1, .page-header h1 a, .page-header h1 a :visited, .page-header h1 a:active {
-    color: #ffffff;
+.page-header ul {
+    list-style-type: none;
+    margin-top: -40px;
+    padding-top: -10px;
+
+}
+
+.page-header h1, .page-header h1 a,  .page-header h1 a:active, .page-header h1 a :visited {
+    color: #FFF;
     font-size: 36pt;
     text-decoration: none;
 }
 
 .content {
-    margin-left: 40px;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+    margin-left: 20px;
 }
 
 .date {
-    color: #828282;
+    color: #FFF;
+    font-size: 10pt;
 }
 
 .save {
@@ -39,11 +57,16 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+.top-menu, .top-menu:visited {
+    color: #FFF;
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+    font-size: 16pt;
+    padding-top: 10px;
+    padding-right: 15px;
+}
+.top-menu:hover {
+    color: #e5e5e5;
+    font-size: 18pt;
 }
 
 .post {
@@ -51,5 +74,34 @@ h1, h2, h3, h4 {
 }
 
 .post h2 a, .post h2 a:visited {
-    color: #000000;
+    color: #FFF;
+    font-size: 22pt;
 }
+
+.post p {
+    color: #370617;
+}
+
+.navigator a {
+    font-family: Georgia;
+    color: #FFF;
+    padding: 0px 20px;
+    text-decoration: none;
+    font-size: 12pt;
+    float: right;
+
+}
+
+.navigator a:hover {
+    color: #e5e5e5;
+    font-size: 18pt;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+*/
