@@ -1,25 +1,20 @@
-#from django.test import TestCase
-from selenium import webdriver
-import unittest
+from django.test import TestCase
+from django.urls import resolve
+from blog.views import post_list
+from django.http import HttpRequest
+#from selenium import webdriver
 
-class NewVisitorTest(unittest.TestCase):
+class HomePageTest(TestCase):
 
-    def setUp(self):
-        self.browser = webdriver.Firefox
-        self.browser.implicitly_wait(3)
-
-    def tearDown(self):
-        self.browser.quit()
-
-    def test_can_start_a_list_and_retrieve_it_later(self):
-        #Victor heard of the new cool website. He goes
-        #to check its homepage
-        self.browser.get('http://127.0.0.1:8000')
-
-        #he notices the header and page title mentions thought...
-        self.assertIn('Thoughts...', self.browser.title)
-        self.fail('Finish the test! ')
+    def test_root_url_resolves_to_post_list(self):
+        found = resolve('/')
+        self.assertEqual(found.func, post_list)
 
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
+    def test_base_html_returns_correct_html(self):
+        request = HttpRequest()
+        response = post_list(request)
+        html = response.content.decode('utf8')
+        self.assertTrue(html.startswith("{% extends 'blog/base.html' %}"))
+        self.assertIn('<p>published: {{ post.published_date }}</p>', html)
+        self.assertTrue(html.endswith('{% endblock %}'))
