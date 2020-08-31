@@ -25,8 +25,9 @@ class Cv(models.Model):
 
     #field
     author_name = models.CharField(max_length=20, help_text='name of author')
-    address = models.TextField()
-    phone_no = models.IntegerField()
+    address = models.TextField(max_length=100)
+    phone_no = models.PositiveIntegerField()
+    email_address = models.EmailField(max_length=254, default='email_address')
     linkedIn = models.URLField()
     profile = models.TextField()
     skills = models.TextField()
@@ -39,4 +40,4 @@ class Cv(models.Model):
         return self.author_name
 
     def publish(self):
-        self.save()    
+        self.save()

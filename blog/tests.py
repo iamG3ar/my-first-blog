@@ -16,5 +16,5 @@ class HomePageTest(TestCase):
         response = post_list(request)
         html = response.content.decode('utf8')
         self.assertTrue(html.startswith("{% extends 'blog/base.html' %}"))
-        self.assertIn('<p>published: {{ post.published_date }}</p>', html)
-        self.assertTrue(html.endswith('{% endblock %}'))
+        self.assertIn('<p>{{ post.text|linebreaksbr }}</p>', html)
+        self.assertTrue(html.endswith('</html>'))

@@ -1,0 +1,92 @@
+{% load static %}
+
+<meta charset="utf-8"/>
+<meta content="first website, how's it going" name="description"/>
+<meta content="Blog" name="author"/>
+<title>Thoughts...</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="{% static 'css/layout.css' %}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" href="favicon.ico"/>
+
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="w3-bar w3-black w3-card">
+          <div class="w3-right">
+              <a href="{% url 'post_list' %}" class="w3-bar-item w3-button w3-padding-large ">HOME</a>
+              <a href="/admin" class="w3-bar-item w3-button w3-padding-large w3-hide-small ">LOGIN/SIGNUP</a>
+              <a href="/#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small ">CONTACT</a>
+              {% if user.is_authenticated %}
+                <a href="{% url 'cv_edit' %}" class="w3-padding-large w3-hover-red w3-hide-small "><i alt="edit CV"class="fa fa-plus" style="font-size:24px;color:white;"></i></a>
+              {% endif %}
+          </div>
+          <div class="w3-left">
+              <p class="logo">Thoughts...</p>
+          </div>
+        </div>
+    </div>
+
+
+    <!-- Page content -->
+    <div id="content" class="w3-container w3-content w3-padding-64" style="max-width:2000px;margin-top:46px">
+        <!-- PAGE STUFF -->
+        {% for cv in cvs %}
+        <div class="rela-block page">
+            <div class="rela-block top-bar">
+                <div class="caps name"><div class="abs-center">{{ cv.author_name }}</div></div>
+            </div>
+            <div class="side-bar">
+                <div class="mugshot">
+                    <div class="logocv">
+                        <!--<svg viewbox="0 0 80 80" class="rela-block logo-svg">
+                            <path d="M 10 10 L 52 10 L 72 30 L 72 70 L 30 70 L 10 50 Z" stroke-width="2.5" fill="none"/>
+                        </svg>-->
+                        <p class="logo-text">g3ar</p>
+                    </div>
+                </div>
+                <p>{{ cv.address }}</p>
+                <p>{{ cv.phone_no }}</p>
+                <p>{{ cv.email_address }}</p>
+                <!--<p class="rela-block social twitter">Twitter: </p>-->
+                <!--<p class="rela-block social pinterest">Pinterest things</p>-->
+                <p class="rela-block social linked-in">Linked-in: {{ cv.linkedIn }}</p>
+                <p class="rela-block caps side-header">Expertise</p>
+                <p class="rela-block list-thing">HTML</p>
+                <p class="rela-block list-thing">CSS (Stylus)</p>
+                <p class="rela-block list-thing">JavaScript & jQuery</p>
+                <p class="rela-block list-thing">{{ cv.skills|linebreaksbr }}</p>
+
+            </div>
+            <div class="rela-block content-container">
+                <h2 class="rela-block caps title">Computer Programmer</h2>
+                <div class="rela-block separator"></div>
+                <div class="rela-block caps greyed">Profile</div>
+                <p class="long-margin">{{ cv.profile|linebreaksbr}}</p>
+                <!--<div class="rela-block caps greyed">Education</div>-->
+
+                <h3>Education</h3>
+                <p class="light"></p>
+                <p class="justified">{{ cv.education|linebreaksbr }}</p>
+
+                <h3>Projects</h3>
+                <p class="light"></p>
+                <p class="justified">{{ cv.projects|linebreaksbr }}</p>
+            </div>
+        </div>
+
+            {% endfor %}
+     </div>
+    <!-- End Page Content -->
+</body>

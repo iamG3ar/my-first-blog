@@ -4,6 +4,8 @@ from .models import Post
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
+from .models import Cv
+from .forms import CvForm
 
 
 # Create your views here.
@@ -43,3 +45,24 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def cv(request):
+    cvs = Cv.objects.all()
+    context = {'cvs': cvs}
+    return render(request, 'blog/cv.html', context)
+
+#def cv_new(request):
+    #form
+
+def cv_edit(request):
+
+    cv = get_object_or_404(Cv)
+    if request.method == "POST":
+        form = CvForm(request.POST, instance=cv)
+        if form.is_valid():
+            cv = form.save(commit=False)
+            cv.save()
+            return redirect('cv')
+    else:
+        form = CvForm(instance=cv)
+    return render(request, 'blog/cv_edit.html', {'form': form})
